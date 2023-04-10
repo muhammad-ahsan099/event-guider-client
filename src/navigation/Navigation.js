@@ -4,6 +4,7 @@ import AuthStack from './authStack/AuthStack';
 // import StackContainer from './stack/Stack';
 import Loader from '../screens/loader/Loader';
 import StackContainer from './stack/Stack';
+import DrawerNavigation from './drawerNavigation/DrawerNavigation';
 const AppStackNavigator = createNativeStackNavigator();
 
 
@@ -30,8 +31,8 @@ export default function Navigation() {
                 :
                 true ? (
                     <AppStackNavigator.Screen
-                        name="StackContainer"
-                        component={StackContainer}
+                        name="DrawerNavigation"
+                        component={DrawerNavigation}
                         options={options}
                     />
                 ) : (

@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
+import VenueIcon from '../../assets/images/venueicon.svg'
 import { Text } from '../../components/Text';
 import { theme } from '../../theming';
 
@@ -77,8 +79,8 @@ export default function BottomTabs() {
                                 style={{
                                     top: Platform.OS === 'ios' ? 10 : 0,
                                 }}>
-                                <Icon
-                                    name="message1"
+                                <Ionicons
+                                    name="home-outline"
                                     size={28}
                                     color={focused ? theme.colors.primary : theme.colors.black}
                                 />
@@ -95,10 +97,12 @@ export default function BottomTabs() {
                                 style={{
                                     top: Platform.OS === 'ios' ? 10 : 0,
                                 }}>
-                                <Icon
-                                    name="inbox"
-                                    size={28}
-                                    color={focused ? theme.colors.primary : theme.colors.black}
+                                <VenueIcon
+                                    // name="inbox"
+                                    // size={28}
+                                    height={40}
+                                    width={40}
+                                    style={{tintColor: focused ? theme.colors.primary : theme.colors.black}}
                                 />
                             </View>
                         ),
@@ -131,7 +135,7 @@ export default function BottomTabs() {
                     }}
                 />
                 <Tab.Screen
-                    name="Statistics"
+                    name="Favorites"
                     component={Screen4}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -139,8 +143,8 @@ export default function BottomTabs() {
                                 style={{
                                     top: Platform.OS === 'ios' ? 10 : 0,
                                 }}>
-                                <Icon
-                                    name="setting"
+                                <Ionicons
+                                    name="heart-outline"
                                     size={28}
                                     color={focused ? theme.colors.primary : theme.colors.black}
                                 />
@@ -149,7 +153,7 @@ export default function BottomTabs() {
                     }}
                 />
                 <Tab.Screen
-                    name="About"
+                    name="User"
                     component={Screen5}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -157,8 +161,8 @@ export default function BottomTabs() {
                                 style={{
                                     top: Platform.OS === 'ios' ? 10 : 0,
                                 }}>
-                                <Icon
-                                    name="infocirlceo"
+                                <Feather
+                                    name="user"
                                     size={28}
                                     color={focused ? theme.colors.primary : theme.colors.black}
                                 />
