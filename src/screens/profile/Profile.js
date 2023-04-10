@@ -39,6 +39,28 @@ export default function Profile() {
           </View>
         </View>
 
+
+        <View style={styles.mainCardDiv}>
+          <View style={styles.cardDiv}>
+            <Icon name="setting" size={28} color={theme.colors.primary} />
+            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+              {'Profile Settings'}
+            </Text>
+          </View>
+          <View style={styles.cardDiv}>
+            <Icons name="search" size={28} color={theme.colors.primary} />
+            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+              {'My Saved Searches'}
+            </Text>
+          </View>
+          <View style={styles.cardDiv}>
+            <Icons name="ios-heart-outline" size={28} color={theme.colors.primary} />
+            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+              {'My  Favourites'}
+            </Text>
+          </View>
+        </View>
+
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <Icon name="contacts" size={25} color={theme.colors.primary} style={styles.icons} />

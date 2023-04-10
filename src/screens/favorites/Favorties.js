@@ -1,10 +1,18 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import FavortiesCard from '../../components/FavortiesCard'
+import { styles } from "./FavoritesStyle";
+import { Screen } from "../../components/Screen";
 
 export default function Favorties() {
   return (
-    <View>
-      <Text>Favorties</Text>
-    </View>
+    <Screen
+      statusBarStyle="light"
+      scroll
+      safeArea
+      style={{ backgroundColor: 'white' }}
+      contentContainerStyle={styles.screen}
+    >
+      <FavortiesCard />
+    </Screen>
   )
 }

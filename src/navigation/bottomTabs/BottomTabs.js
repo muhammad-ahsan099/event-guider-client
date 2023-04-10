@@ -11,6 +11,7 @@ import { Text } from '../../components/Text';
 import { theme } from '../../theming';
 import Profile from "../../screens/profile/Profile";
 import Venues from '../../screens/venues/Venues';
+import Favorties from "../../screens/favorites/Favorties";
 
 const Screen1 = () => {
     return (
@@ -150,7 +151,7 @@ export default function BottomTabs() {
                 />
                 <Tab.Screen
                     name="Favorites"
-                    component={Screen4}
+                    component={Favorties}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
