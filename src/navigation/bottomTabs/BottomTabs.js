@@ -75,7 +75,7 @@ export default function BottomTabs() {
                 })}>
                 <Tab.Screen
                     name="Dashboard"
-                    component={Profile}
+                    component={Screen1}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
@@ -168,7 +168,7 @@ export default function BottomTabs() {
                 />
                 <Tab.Screen
                     name="User"
-                    component={Screen5}
+                    component={Profile}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
