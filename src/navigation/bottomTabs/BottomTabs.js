@@ -6,8 +6,11 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import VenueIcon from '../../assets/images/venueicon.svg'
+import ActiveVenueIcon from '../../assets/images/venueiconActive.svg'
 import { Text } from '../../components/Text';
 import { theme } from '../../theming';
+import Profile from "../../screens/profile/Profile";
+import Venues from '../../screens/venues/Venues';
 
 const Screen1 = () => {
     return (
@@ -72,7 +75,7 @@ export default function BottomTabs() {
                 })}>
                 <Tab.Screen
                     name="Dashboard"
-                    component={Screen1}
+                    component={Profile}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
@@ -90,20 +93,31 @@ export default function BottomTabs() {
                 />
                 <Tab.Screen
                     name="History"
-                    component={Screen2}
+                    component={Venues}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
                                 style={{
                                     top: Platform.OS === 'ios' ? 10 : 0,
                                 }}>
-                                <VenueIcon
-                                    // name="inbox"
-                                    // size={28}
-                                    height={40}
-                                    width={40}
-                                    style={{tintColor: focused ? theme.colors.primary : theme.colors.black}}
-                                />
+                                {
+                                    focused ?
+                                        <ActiveVenueIcon
+                                            // name="inbox"
+                                            // size={28}
+                                            height={40}
+                                            width={40}
+                                            style={{ tintColor: focused ? theme.colors.primary : theme.colors.black }}
+                                        />
+                                        :
+                                        <VenueIcon
+                                            // name="inbox"
+                                            // size={28}
+                                            height={40}
+                                            width={40}
+                                            style={{ tintColor: focused ? theme.colors.primary : theme.colors.black }}
+                                        />
+                                }
                             </View>
                         ),
                     }}
@@ -188,7 +202,7 @@ const styles = StyleSheet.create({
         width: Platform.OS === 'ios' ? 50 : 50,
         height: Platform.OS === 'ios' ? 50 : 50,
         borderRadius: 50,
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
         shadowColor: theme.colors.primary,
         shadowOffset: {
             width: 0,
@@ -196,8 +210,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.43,
         shadowRadius: 9.51,
-        
-        elevation: 15,     
+
+        elevation: 15,
     },
     label: {
         fontSize: 16,
