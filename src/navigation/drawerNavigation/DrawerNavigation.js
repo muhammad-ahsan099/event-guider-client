@@ -15,7 +15,7 @@ export default function DrawerNavigation() {
       drawerContent={props => <DrawerContent {...props} />}
       screenOptions={{
         drawerType: dimensions.width >= 768 ? 'front' : 'front',
-        headerShown: true,
+        headerShown: false,
         drawerStyle: {
           backgroundColor: theme.colors.white,
           // width: '100%',

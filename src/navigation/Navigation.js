@@ -5,6 +5,8 @@ import AuthStack from './authStack/AuthStack';
 import Loader from '../screens/loader/Loader';
 import StackContainer from './stack/Stack';
 import DrawerNavigation from './drawerNavigation/DrawerNavigation';
+import { SafeAreaView, StatusBar, View } from 'react-native';
+import { theme } from '../theming';
 const AppStackNavigator = createNativeStackNavigator();
 
 
@@ -20,31 +22,34 @@ export default function Navigation() {
     };
 
     return (
-        <AppStackNavigator.Navigator screenOptions={{ headerShown: false }}>
+        <>
+            <View style={{width: '100%', height: 47, backgroundColor: theme.colors.primary}} />
+            <AppStackNavigator.Navigator screenOptions={{ headerShown: false }}>
 
-            {loader ?
-                <AppStackNavigator.Screen
-                    name="Loader"
-                    component={Loader}
-                    options={options}
-                />
-                :
-                true ? (
+                {loader ?
                     <AppStackNavigator.Screen
-                        name="DrawerNavigation"
-                        component={DrawerNavigation}
+                        name="Loader"
+                        component={Loader}
                         options={options}
                     />
-                ) : (
-                    <AppStackNavigator.Screen
-                        name="AuthStack"
-                        component={AuthStack}
-                        options={options}
-                    />
-                )
-            }
+                    :
+                    true ? (
+                        <AppStackNavigator.Screen
+                            name="DrawerNavigation"
+                            component={DrawerNavigation}
+                            options={options}
+                        />
+                    ) : (
+                        <AppStackNavigator.Screen
+                            name="AuthStack"
+                            component={AuthStack}
+                            options={options}
+                        />
+                    )
+                }
 
 
-        </AppStackNavigator.Navigator>
+            </AppStackNavigator.Navigator>
+        </>
     )
 }

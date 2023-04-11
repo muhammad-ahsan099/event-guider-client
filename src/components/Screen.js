@@ -48,7 +48,7 @@ export function Screen({
         keyboardVerticalOffset === undefined ? bottomInset : keyboardVerticalOffset
       }
     >
-      <StatusBar backgroundColor={'#fff'} barStyle="dark-content" />
+      <StatusBar backgroundColor={'#fff'} barStyle="light-content" />
 
       {/* this is where you would add your top bar with the header or change the navigation system header */}
 
