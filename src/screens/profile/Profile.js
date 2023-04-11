@@ -10,8 +10,10 @@ import Feather from "react-native-vector-icons/Feather";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Profile() {
+  const navigation = useNavigation()
   return (
     <>
       <Screen
@@ -43,19 +45,19 @@ export default function Profile() {
         <View style={styles.mainCardDiv}>
           <View style={styles.cardDiv}>
             <Icon name="setting" size={28} color={theme.colors.primary} />
-            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+            <Text color='black' size={16} weight={'medium'} style={styles.cardText}>
               {'Profile Settings'}
             </Text>
           </View>
           <View style={styles.cardDiv}>
             <Icons name="search" size={28} color={theme.colors.primary} />
-            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+            <Text color='black' size={16} weight={'medium'} style={styles.cardText}>
               {'My Saved Searches'}
             </Text>
           </View>
           <View style={styles.cardDiv}>
             <Icons name="ios-heart-outline" size={28} color={theme.colors.primary} />
-            <Text color='black' size={16} weight={'bold'} style={styles.cardText}>
+            <Text color='black' size={16} weight={'medium'} style={styles.cardText}>
               {'My  Favourites'}
             </Text>
           </View>
@@ -64,7 +66,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <Icon name="contacts" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Contact Us"}
             </Text>
           </View>
@@ -76,7 +78,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <Feather name="thumbs-up" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Feedback"}
             </Text>
           </View>
@@ -87,7 +89,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <SimpleLineIcons name="envelope-letter" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Invite Freinds to Finder"}
             </Text>
           </View>
@@ -98,7 +100,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <MaterialCommunityIcons name="file-account-outline" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Terms and Privacy Policy"}
             </Text>
           </View>
@@ -107,7 +109,7 @@ export default function Profile() {
           </View>
         </View>
         <Button
-          onPress={() => navigation.navigate('Signup')}
+          onPress={() => navigation.navigate('Login')}
           // loading={loginMutation.isLoading}
           // disabled={!isValid || !dirty}
           containerStyle={styles.loginBtn}
