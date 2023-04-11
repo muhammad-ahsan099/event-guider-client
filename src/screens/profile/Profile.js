@@ -10,6 +10,7 @@ import Feather from "react-native-vector-icons/Feather";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from '../../components/Button';
+import Appbar from '../../components/Appbar';
 
 export default function Profile() {
   return (
@@ -21,13 +22,15 @@ export default function Profile() {
         style={{ backgroundColor: 'white' }}
         contentContainerStyle={styles.screen}
       >
-        <Text size={28} color='black' weight={'bold'} style={styles.profileText}>
+        <Appbar />
+        <View style={styles.container}>
+        <Text size={28} color='black' weight={'semiBold'} style={styles.profileText}>
           {"Profile"}
         </Text>
 
         <View style={styles.loginIconDiv}>
           <View>
-            <Text size={18} color='black' weight={"bold"}>
+            <Text size={18} color='black' weight={"medium"}>
               {"Log in"}
             </Text>
             <Text size={18} color={'primary'}>
@@ -42,7 +45,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <Icon name="contacts" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Contact Us"}
             </Text>
           </View>
@@ -54,7 +57,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <Feather name="thumbs-up" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Feedback"}
             </Text>
           </View>
@@ -65,7 +68,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <SimpleLineIcons name="envelope-letter" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Invite Freinds to Finder"}
             </Text>
           </View>
@@ -76,7 +79,7 @@ export default function Profile() {
         <View style={styles.loginManuDiv}>
           <View style={styles.manuDiv}>
             <MaterialCommunityIcons name="file-account-outline" size={25} color={theme.colors.primary} style={styles.icons} />
-            <Text size={16} color={'black'} weight={"bold"} style={styles.manuText}>
+            <Text size={16} color={'black'} weight={"medium"} style={styles.manuText}>
               {"Terms and Privacy Policy"}
             </Text>
           </View>
@@ -93,6 +96,7 @@ export default function Profile() {
         >
           {'LogIn'}
         </Button>
+        </View>
       </Screen>
     </>
   )

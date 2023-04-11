@@ -14,18 +14,18 @@ export default function VenueCard() {
                     <Touchable style={styles.container} key={index}>
                         <Image source={image} resizeMode="cover" style={styles.backgroundImage} />
                         <View>
-                            <Text color='primary' weight={'bold'}>Venue Name</Text>
+                            <Text color='primary' size={16} weight={'semiBold'}>Venue Name</Text>
                             <Text color='black'>Canal road, Faisalabad</Text>
 
                             <View style={styles.btnContainer}>
                                 <Touchable style={styles.emailBtn}>
-                                    <Text weight={'bold'} size={13}>EMAIL</Text>
+                                    <Text weight={'medium'} size={13}>EMAIL</Text>
                                 </Touchable>
                                 <Touchable style={[styles.emailBtn, {  backgroundColor: theme.colors.primary }]}>
-                                    <Text weight={'bold'} size={13} color='white'>CALL</Text>
+                                    <Text weight={'medium'} size={13} color='white'>CALL</Text>
                                 </Touchable>
-                                <Touchable weight={'bold'} style={styles.emailBtn}>
-                                    <Text weight={'bold'} size={13}>SMS</Text>
+                                <Touchable weight={'medium'} style={styles.emailBtn}>
+                                    <Text weight={'medium'} size={13}>SMS</Text>
                                 </Touchable>
                                 <Touchable style={[styles.emailBtn, { paddingHorizontal: 4 }]}>
                                     <Ionicons name="ios-logo-whatsapp" size={18} color={theme.colors.primary} />
