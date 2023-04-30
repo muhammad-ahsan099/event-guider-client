@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const AppStack = createNativeStackNavigator();
 import BottomTabs from '../bottomTabs/BottomTabs';
+import LoginScreen from '../../screens/auth/login/LoginScreen';
+import SignUpScreen from '../../screens/auth/signUp/SignUpScreen';
+import ForgotPasswordScreen from '../../screens/auth/forgotPasswordScreen/ForgotPasswordScreen';
+import ForgotPasswordSuccessScreen from '../../screens/auth/forgotPasswordSuccessScreen/ForgotPasswordSuccessScreen';
 
 
 // StackContainer
@@ -17,9 +21,9 @@ function StackContainer() {
   };
 
   return (
-    <AppStack.Navigator screenOptions={{headerShown: false}} initialRouteName={'BottomTabs'}>
-       
-       <AppStack.Screen
+    <AppStack.Navigator screenOptions={{ headerShown: false }} initialRouteName={'BottomTabs'}>
+
+      <AppStack.Screen
         name="BottomTabs"
         component={BottomTabs}
         options={{
@@ -29,7 +33,28 @@ function StackContainer() {
         }}
       />
 
-     
+      <AppStack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={options}
+      />
+      <AppStack.Screen
+        name="Signup"
+        component={SignUpScreen}
+        options={options}
+      />
+      <AppStack.Screen
+        name="ForgotPasswordScreen"
+        component={ForgotPasswordScreen}
+        options={options}
+      />
+      <AppStack.Screen
+        name="ForgotPasswordSuccessScreen"
+        component={ForgotPasswordSuccessScreen}
+        options={options}
+      />
+
+
     </AppStack.Navigator>
   );
 }

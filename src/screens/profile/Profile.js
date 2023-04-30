@@ -11,6 +11,7 @@ import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from '../../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import Appbar from '../../components/Appbar';
 
 export default function Profile() {
   const navigation = useNavigation()
@@ -23,13 +24,15 @@ export default function Profile() {
         style={{ backgroundColor: 'white' }}
         contentContainerStyle={styles.screen}
       >
-        <Text size={28} color='black' weight={'bold'} style={styles.profileText}>
+        <Appbar />
+        <View style={styles.container}>
+        <Text size={28} color='black' weight={'semiBold'} style={styles.profileText}>
           {"Profile"}
         </Text>
 
         <View style={styles.loginIconDiv}>
           <View>
-            <Text size={18} color='black' weight={"bold"}>
+            <Text size={18} color='black' weight={"medium"}>
               {"Log in"}
             </Text>
             <Text size={18} color={'primary'}>
@@ -117,6 +120,7 @@ export default function Profile() {
         >
           {'LogIn'}
         </Button>
+        </View>
       </Screen>
     </>
   )

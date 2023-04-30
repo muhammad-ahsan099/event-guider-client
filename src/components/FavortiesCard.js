@@ -6,35 +6,36 @@ import { Touchable } from './Touchable';
 import { theme } from '../theming';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { venuesTwo } from '../constants/Data';
 
 function FavortiesCard() {
     return (
         <>
-            <Text color='black' weight={'bold'} size={26} style={styles.heading}>
+            <Text color='black' weight={'semiBold'} size={26} style={styles.heading}>
                 Favorites & Saved
             </Text>
             {
-                [1, 2, 3,].map((items, index) => (
+                venuesTwo.map((items, index) => (
                     <Touchable style={styles.container} key={index}>
-                        <Image source={image} resizeMode="cover" style={styles.backgroundImage} />
+                        <Image source={items.url ? {uri: items.url}  :image} resizeMode="cover" style={styles.backgroundImage} />
                         <View>
                             <Text color={theme.colors.grey} size={12} style={styles.daysMargin}>
                                 27 days ago
                             </Text>
-                            <Text color='primary' size={18} weight={'bold'}>Venue Name</Text>
-                            <Text color='black'>Canal road, Faisalabad</Text>
+                            <Text color='primary' size={18} weight={'semiBold'}>{items.title ? items.title : 'Venue Name'}</Text>
+                            <Text color='black'>{items.location? items.location : 'Canal road, Faisalabad'}</Text>
                             <View style={styles.heartIcon}>
                                 <Ionicons name="heart" size={20} color={theme.colors.primary} />
                             </View>
                             <View style={styles.btnContainer}>
                                 <Touchable style={styles.emailBtn}>
-                                    <Text weight={'bold'} size={13}>EMAIL</Text>
+                                    <Text weight={'medium'} size={13}>EMAIL</Text>
                                 </Touchable>
                                 <Touchable style={[styles.emailBtn, { backgroundColor: theme.colors.primary }]}>
-                                    <Text weight={'bold'} size={13} color='white'>CALL</Text>
+                                    <Text weight={'medium'} size={13} color='white'>CALL</Text>
                                 </Touchable>
-                                <Touchable weight={'bold'} style={styles.emailBtn}>
-                                    <Text weight={'bold'} size={13}>SMS</Text>
+                                <Touchable style={styles.emailBtn}>
+                                    <Text weight={'medium'} size={13}>SMS</Text>
                                 </Touchable>
                                 <Touchable style={[styles.emailBtn, { paddingHorizontal: 4 }]}>
                                     <Ionicons name="ios-logo-whatsapp" size={18} color={theme.colors.primary} />
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingVertical: 10,
         paddingHorizontal: 10,
-        borderRadius: 4
+        borderRadius: 4,
     },
     screen: {
         flex: 1,
@@ -100,6 +101,6 @@ const styles = StyleSheet.create({
         marginBottom: 2
     },
     heartIcon : {
-        flexDirection: 'row-reverse'
+        alignItems:'flex-end'
     }
 })

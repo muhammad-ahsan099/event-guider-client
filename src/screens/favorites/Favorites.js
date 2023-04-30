@@ -2,6 +2,8 @@ import React from 'react'
 import FavortiesCard from '../../components/FavortiesCard'
 import { styles } from "./FavoritesStyle";
 import { Screen } from "../../components/Screen";
+import Appbar from '../../components/Appbar';
+import { View } from 'react-native';
 
 export default function Favorties() {
   return (
@@ -12,7 +14,10 @@ export default function Favorties() {
       style={{ backgroundColor: 'white' }}
       contentContainerStyle={styles.screen}
     >
+      <Appbar />
+      <View style={styles.container}>
       <FavortiesCard />
+      </View>
     </Screen>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import VenueCard from "../../components/VenueCard";
 import { Screen } from '../../components/Screen';
 import { styles } from './VenuesStyle';
+import Appbar from '../../components/Appbar';
+import { View } from 'react-native';
 
 function Venues() {
     return (
@@ -12,7 +14,11 @@ function Venues() {
             style={{ backgroundColor: 'white' }}
             contentContainerStyle={styles.screen}
         >
-            <VenueCard />
+            <Appbar />
+            <View style={styles.container}>
+
+                <VenueCard />
+            </View>
         </Screen>
     )
 }

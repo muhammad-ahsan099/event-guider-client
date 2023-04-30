@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    container: {
+    screen: {
         flex: 1
     },
-    screen: {
+    container: {
         justifyContent: 'center',
         paddingHorizontal: 16,
-        paddingBottom: 70,
+        marginTop: 20,
+        // paddingBottom: 70,
     }
 })

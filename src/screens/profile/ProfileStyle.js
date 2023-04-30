@@ -3,11 +3,11 @@ import { theme } from "../../theming";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        paddingHorizontal: 16,
     },
     screen: {
         flex: 1,
-        paddingHorizontal: 16,
     },
     profileText: {
         marginBottom: 12,

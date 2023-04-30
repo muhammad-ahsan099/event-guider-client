@@ -11,7 +11,8 @@ import { Text } from '../../components/Text';
 import { theme } from '../../theming';
 import Profile from "../../screens/profile/Profile";
 import Venues from '../../screens/venues/Venues';
-import Favorties from "../../screens/favorites/Favorties";
+import Favorties from "../../screens/favorites/Favorites";
+import Home from '../../screens/home/Home';
 
 const Screen1 = () => {
     return (
@@ -76,7 +77,7 @@ export default function BottomTabs() {
                 })}>
                 <Tab.Screen
                     name="Dashboard"
-                    component={Screen1}
+                    component={Home}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View
