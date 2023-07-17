@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     loginBtn: {
         backgroundColor: theme.colors.primary,
         borderRadius: 8,
-        height: 56,
+        height: 45,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 40
@@ -66,4 +66,46 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16
     },
+    logoutBtn: {
+        // backgroundColor: theme.colors.primary,
+        borderRadius: 8,
+        height: 45,
+        flexDirection: 'row',
+        alignItems: 'center',
+        // justifyContent: 'center',
+        marginTop: 40,
+        marginLeft: 2,
+    },
+    logoutTxt: {
+        color: theme.colors.primary,
+        fontWeight: '600',
+        fontSize: 16,
+        alignItems: 'center',
+        marginLeft: 10,
+    },
+    mainCardDiv: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    cardDiv: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+        height: 110,
+        width: 100,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        elevation: 3,
+        backgroundColor: 'white'
+    },
+    cardText: {
+        marginTop: 4,
+        textAlign: 'center'
+    }
 })

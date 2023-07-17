@@ -19,39 +19,12 @@ import Google from '../../../assets/images/google.svg'
 import { theme } from '../../../theming';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Touchable } from '../../../components/Touchable';
+import UseSignUp from './UseSignUp';
 
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
-  // const [isConnected] = useNetInfo();
-  // let appError;
-
-  // const { values, isValid, handleSubmit, handleChange, handleBlur, dirty } = useFormik({
-  //   initialValues,
-  //   validate: ({ email, password }) =>
-  //     !email || !password
-  //       ? {
-  //         email: !email ? 'Email is required' : undefined,
-  //         password: !password ? 'Password is required' : undefined,
-  //       }
-  //       : undefined,
-  //   onSubmit: ({ email, password }) => {
-  //     // !isConnected
-  //     //   ? Alert.alert('No Internet', 'Connected to the internet?')
-  //     //   : loginMutation.mutate({ email, password });
-  //   },
-  // });
-
-  // const handleForgotPassword = useCallback(() => {
-  //   navigation.navigate('ForgotPasswordScreen', {
-  //     params: { username: values.email },
-  //   });
-  // }, [navigation, values.email]);
-
-  // const submit = useCallback(() => {
-  //   handleSubmit();
-  // }, [handleSubmit]);
-
+  const [{ values, loading, handleChange, handleClickShowPassword, email, setEmail, userName, setUserName, signupHandler, server_error }] = UseSignUp()
   const handleNavigation = useCallback(() => navigation.goBack(), [navigation]);
 
 
@@ -85,11 +58,10 @@ const SignUpScreen = () => {
             <TextInput
               placeholder="Input your name here"
               placeholderTextColor={theme.colors.lightGrey}
-              // autoCapitalize="true"
+              autoCapitalize="none"
               autoCorrect={false}
-              // value={values.email}
-              // onChangeText={handleChange('email')}
-              // onBlur={handleBlur('email')}
+              value={userName}
+              onChangeText={(text)=> setUserName(text)}
               style={[
                 styles.textInput,
                 styles.textInputText,
@@ -107,9 +79,8 @@ const SignUpScreen = () => {
               placeholderTextColor={theme.colors.lightGrey}
               autoCapitalize="none"
               autoCorrect={false}
-              // value={values.email}
-              // onChangeText={handleChange('email')}
-              // onBlur={handleBlur('email')}
+              value={email}
+              onChangeText={(text)=> setEmail(text)}
               style={[
                 styles.textInput,
                 styles.textInputText,
@@ -124,13 +95,11 @@ const SignUpScreen = () => {
             <TextInput
               placeholder="Input your phone here"
               placeholderTextColor={theme.colors.lightGrey}
-              autoCapitalize="none"
               autoCorrect={false}
               cursorColor={theme.colors.primary}
               keyboardType={'phone-pad'}
-              // value={values.email}
-              // onChangeText={handleChange('email')}
-              // onBlur={handleBlur('email')}
+              value={values.phone}
+              onChangeText={handleChange('phone')}
               style={[
                 styles.textInput,
                 styles.textInputText,
@@ -149,9 +118,8 @@ const SignUpScreen = () => {
               autoCapitalize="none"
               autoCorrect={false}
               secureTextEntry={true}
-              // value={values.password}
-              // onChangeText={handleChange('password')}
-              // onBlur={handleBlur('password')}
+              value={values.password}
+              onChangeText={handleChange('password')}
               style={[
                 styles.textInputText,
                 styles.textInput,
@@ -163,8 +131,30 @@ const SignUpScreen = () => {
               enablesReturnKeyAutomatically={true}
             />
           </View>
+          <View>
+            <Text style={styles.emailText}>{'Confirm Password'}</Text>
+            <TextInput
+              placeholder="Input your password here"
+              placeholderTextColor={theme.colors.lightGrey}
+              autoCapitalize="none"
+              autoCorrect={false}
+              secureTextEntry={true}
+              value={values.confirmPassword}
+              onChangeText={handleChange('confirmPassword')}
+              style={[
+                styles.textInputText,
+                styles.textInput,
+              ]}
+              textContentType="password"
+              autoComplete="password"
+              returnKeyType="done"
+              returnKeyLabel="Login"
+              enablesReturnKeyAutomatically={true}
+            />
+          </View>
+
           <Button
-            // onPress={submit}
+            onPress={signupHandler}
             // loading={loginMutation.isLoading}
             // disabled={!isValid || !dirty}
             containerStyle={styles.loginBtn}

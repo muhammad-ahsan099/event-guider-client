@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { getToken, removeToken, storeToken } from '../../common/localStorage/LocalStorage';
+import { getToken, removeToken, storeToken } from '../../utils/LocalStorage';
 import { endPoint } from '../../config/EndPoint';
 import { LOGIN, ACTIVE_USER, CREATE_ACCOUNT, FORGOT_PASSWORD, RESET_PASSWORD, LOGOUT, USER_PROFILE } from '../type/Type';
 
-export const doLogin = (email, password, navigate, setLoading, setServerError) => async (dispatch) => {
+export const doLogin = (email, password, navigation, setLoading, setServerError) => async (dispatch) => {
   try {
     setLoading(true)
     const creds = {
@@ -20,13 +20,14 @@ export const doLogin = (email, password, navigate, setLoading, setServerError) =
     };
     let res = await axios(request);
     if (res.data) {
+      console.log('Res DAta: ', res.data);
       storeToken(res.data.token)
       dispatch({
         type: LOGIN,
         payload: res?.data,
       })
       setTimeout(() =>
-        navigate('/')
+        navigation.navigate('Home')
         , 1000)
     }
   }
@@ -43,8 +44,9 @@ export const doLogin = (email, password, navigate, setLoading, setServerError) =
 
 export const fetchProfile = (setLoading) => async (dispatch) => {
   try {
+    console.log("Trigger user profile");
     setLoading(true)
-    const { access_token } = getToken()
+    const { access_token } = await getToken()
     let request = {
       method: 'get',
       url: `${endPoint}user/profile/`,
@@ -75,7 +77,7 @@ export const fetchProfile = (setLoading) => async (dispatch) => {
 
 export const getLoggedInUser = () => async (dispatch) => {
   try {
-    let { access_token } = getToken()
+    let { access_token } = await getToken()
     if (access_token) {
       dispatch({
         type: ACTIVE_USER,
@@ -90,6 +92,7 @@ export const getLoggedInUser = () => async (dispatch) => {
 
 export const createAccount = (creds, navigate, setLoading, setServerError) => async (dispatch) => {
   try {
+    console.log('Creds: ', creds);
     setLoading(true)
     let request = {
       method: 'post',
@@ -106,7 +109,7 @@ export const createAccount = (creds, navigate, setLoading, setServerError) => as
         payload: res?.data,
       });
       setTimeout(() =>
-        navigate('/login')
+        navigate.navigate('Home')
         , 1000)
     }
 
@@ -193,15 +196,12 @@ export const doLogout = (setLoading) => async (dispatch) => {
       type: LOGOUT,
       payload: null,
     })
-    window.location.href = '/';
 
   }
   catch (error) {
     console.log(error?.message)
   }
   finally {
-    setTimeout(() =>
       setLoading(false)
-      , 1000)
   }
 }

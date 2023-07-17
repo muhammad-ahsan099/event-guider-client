@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     },
     inputContainer: {
         marginTop: 48,
+        marginBottom: 10,
     },
     emailText: {
         color: theme.colors.lightPrimary,
@@ -45,7 +46,7 @@ export const styles = StyleSheet.create({
     textInput: {
         alignItems: 'center',
         height: 48,
-        marginBottom: 16,
+        marginBottom: 6,
         paddingHorizontal: 15,
         borderRadius: 6,
         borderWidth: 1,
@@ -130,4 +131,9 @@ export const styles = StyleSheet.create({
     textAlignCenter: {
         textAlign: 'center',
     },
+    error: {
+        color: 'rgb(211,0,0)',
+        fontSize: 12,
+        fontWeight: 400,
+    }
 })
