@@ -1,9 +1,10 @@
-import { LOGIN, CREATE_ACCOUNT ,ACTIVE_USER,FORGOT_PASSWORD,RESET_PASSWORD,LOGOUT, USER_PROFILE} from '../type/Type';
+import { LOGIN, CREATE_ACCOUNT, ACTIVE_USER, FORGOT_PASSWORD, RESET_PASSWORD, LOGOUT, USER_PROFILE, FILTER_WATCHLIST } from '../type/Type';
 const initialState = {
     isUserLoggedIn: false,
     forgotPasswordEmailSend: false,
     resetSuccess: false,
     userProfile: null,
+    user: null,
     loader: false
 };
 
@@ -16,12 +17,30 @@ const AuthReducer = (state = initialState, action) => {
                 user: action.payload
             }
         }
-        
+
         case USER_PROFILE: {
             return {
                 ...state,
+                isUserLoggedIn: true,
                 userProfile: action.payload
             }
+        }
+        case FILTER_WATCHLIST: {
+            const updatedToWishlist = state.userProfile.user_wishlist.to_wishlist.filter(
+                venue => venue.id !== action.payload
+            );
+
+            const updatedUserProfile = {
+                ...state.userProfile,
+                user_wishlist: {
+                    ...state.userProfile.user_wishlist,
+                    to_wishlist: updatedToWishlist
+                }
+            };
+            return {
+                ...state,
+                userProfile: updatedUserProfile
+            };
         }
 
         case ACTIVE_USER: {

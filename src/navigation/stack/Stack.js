@@ -6,6 +6,10 @@ import LoginScreen from '../../screens/auth/login/LoginScreen';
 import SignUpScreen from '../../screens/auth/signUp/SignUpScreen';
 import ForgotPasswordScreen from '../../screens/auth/forgotPasswordScreen/ForgotPasswordScreen';
 import ForgotPasswordSuccessScreen from '../../screens/auth/forgotPasswordSuccessScreen/ForgotPasswordSuccessScreen';
+import DetailPage from '../../screens/detailPage/DetailPage';
+import VirtualTour from '../../screens/detailPage/components/virtualTour/VirtualTour';
+import Maps from '../../screens/detailPage/components/maps/Maps';
+import Search from '../../screens/search/Search';
 
 
 // StackContainer
@@ -31,6 +35,26 @@ function StackContainer() {
           gestureDirection: 'horizontal',
           headerShown: false,
         }}
+      />
+      <AppStack.Screen
+        name="DetailPage"
+        component={DetailPage}
+        options={options}
+      />
+      <AppStack.Screen
+        name="SearchScreen"
+        component={Search}
+        options={options}
+      />
+      <AppStack.Screen
+        name="VirtualTour"
+        component={VirtualTour}
+        options={options}
+      />
+      <AppStack.Screen
+        name="Maps"
+        component={Maps}
+        options={options}
       />
 
       <AppStack.Screen

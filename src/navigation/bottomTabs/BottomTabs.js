@@ -13,6 +13,7 @@ import Profile from "../../screens/profile/Profile";
 import Venues from '../../screens/venues/Venues';
 import Favorties from "../../screens/favorites/Favorites";
 import Home from '../../screens/home/Home';
+import Search from '../../screens/search/Search';
 
 const Screen1 = () => {
     return (
@@ -76,7 +77,7 @@ export default function BottomTabs() {
                     headerShown: false,
                 })}>
                 <Tab.Screen
-                    name="Dashboard"
+                    name="Home"
                     component={Home}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -94,7 +95,7 @@ export default function BottomTabs() {
                     }}
                 />
                 <Tab.Screen
-                    name="History"
+                    name="Venues"
                     component={Venues}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -125,8 +126,8 @@ export default function BottomTabs() {
                     }}
                 />
                 <Tab.Screen
-                    name="Create"
-                    component={Screen3}
+                    name="Search"
+                    component={Search}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View style={[styles.shadow]}>

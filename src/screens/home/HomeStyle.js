@@ -3,13 +3,25 @@ import { theme } from "../../theming";
 
 export const styles = StyleSheet.create({
     screen: {
-        
+        flex: 1,
+        marginBottom:30 
     },
     container: {
         flex: 1,
         paddingHorizontal: 16,
         paddingBottom: 80,
     },
+
+    header: {
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        left: 0,
+        right: 0,
+        width: '100%',
+        zIndex: 1,
+        borderBottomEndRadius: 10
+      },
+
     recommendCards: {
         paddingVertical: 10,
         paddingHorizontal: 10,
@@ -28,5 +40,5 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
-    }
+    },
 })

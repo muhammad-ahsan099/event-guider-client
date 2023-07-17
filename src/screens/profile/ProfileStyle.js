@@ -66,6 +66,23 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16
     },
+    logoutBtn: {
+        // backgroundColor: theme.colors.primary,
+        borderRadius: 8,
+        height: 45,
+        flexDirection: 'row',
+        alignItems: 'center',
+        // justifyContent: 'center',
+        marginTop: 40,
+        marginLeft: 2,
+    },
+    logoutTxt: {
+        color: theme.colors.primary,
+        fontWeight: '600',
+        fontSize: 16,
+        alignItems: 'center',
+        marginLeft: 10,
+    },
     mainCardDiv: {
         flexDirection: 'row',
         justifyContent: 'space-between',

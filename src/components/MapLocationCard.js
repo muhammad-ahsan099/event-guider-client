@@ -1,39 +1,41 @@
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, ImageBackground } from 'react-native'
 import React from 'react'
 import { theme } from '../theming'
 import { Text } from './Text'
 import { POST_VENUE } from '../constants/Icons'
 import { Touchable } from './Touchable'
 import ArrowIcon from 'react-native-vector-icons/AntDesign'
+import MapBg from '../assets/images/mapBG.jpeg'
 
 export default function MapLocationCard() {
     return (
         <View style={styles.container}>
+            <ImageBackground
+                source={MapBg}
+                resizeMode="cover"
+                style={styles.bgMap}
+            >
 
-            <Text color='primary' size={18} weight={'semiBold'}>Venue Finder</Text>
+                <Text color='primary' size={18} weight={'semiBold'}>Venue Finder</Text>
 
-            <View style={styles.innerContainer}>
-                {/* <Image source={POST_VENUE} style={styles.img} /> */}
-                <Text color='black' size={14} weight={'regular'}>Interactive Society Maps</Text>
-            </View>
+                <View style={styles.innerContainer}>
+                    {/* <Image source={POST_VENUE} style={styles.img} /> */}
+                    <Text color='black' size={14} weight={'regular'}>Interactive Society Maps</Text>
+                </View>
 
-            <Touchable style={styles.postBtn}>
-                <Text color={'primary'} size={14} weight={'medium'}>Try it now</Text>
-                <ArrowIcon name='arrowright' size={18} color={theme.colors.primary} />
-            </Touchable>
+                <Touchable style={styles.postBtn}>
+                    <Text color={'primary'} size={14} weight={'medium'}>Try it now</Text>
+                    <ArrowIcon name='arrowright' size={18} color={theme.colors.primary} />
+                </Touchable>
+            </ImageBackground>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        // flex:1,
-        // flexDirection: 'row',
         width: '100%',
         height: 'auto',
-        backgroundColor: 'pink',
-        paddingHorizontal: 12,
-        paddingVertical: 14,
         borderRadius: 8,
         backgroundColor: theme.colors.white,
         shadowColor: "#000",
@@ -45,6 +47,10 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         marginBottom: 20,
         elevation: 5,
+    },
+    bgMap: {
+        paddingHorizontal: 12,
+        paddingVertical: 14,
     },
     innerContainer: {
         marginTop: 10,

@@ -1,41 +1,79 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, Linking } from 'react-native'
 import image from '../assets/images/venue.jpg';
 import { Text } from '../components/Text';
 import { Touchable } from './Touchable';
 import { theme } from '../theming';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { venues } from '../constants/Data';
+import { venuesTwo } from '../constants/Data';
+import WishListBtn from './WishListBtn';
 
-export default function VenueCard() {
+export default function VenueCard({ venue, navigationHandler, navigate }) {
+
+    const openEmailApp = (email) => {
+        const recipientEmail = email; // Replace with the recipient email address
+        const url = `mailto:${recipientEmail}`;
+
+        Linking.openURL(url)
+            .catch((error) => console.error('An error occurred', error));
+    };
+
+    const openPhoneCall = (phone) => {
+        const phoneNumber = '03056496364'; // Replace with the desired phone number
+        const url = `tel:${phoneNumber}`;
+
+        Linking.openURL(url)
+            .catch((error) => console.error('An error occurred', error));
+    };
+
+    const openMessagingApp = (phone) => {
+        const phoneNumber = '03056496364'; // Replace with the desired phone number
+        const message = 'Hello!'; // Replace with the desired message
+        const url = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+        Linking.openURL(url)
+            .catch((error) => console.error('An error occurred', error));
+    };
+
+    const openWhatsApp = (phone) => {
+        const phoneNumber = '1234567890'; // Replace with the desired phone number
+        const message = 'Hello!'; // Replace with the desired message
+        const url = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+        Linking.openURL(url)
+            .catch((error) => console.error('An error occurred', error));
+    };
+
     return (
         <>
-            {
-                venues.map((venue, index) => (
-                    <Touchable style={styles.container} key={index}>
-                        <Image source={venue?.url ? {uri: venue?.url} : image} resizeMode="cover" style={styles.backgroundImage} />
-                        <View>
-                            <Text color='primary' size={16} weight={'semiBold'}>{venue?.title ? venue?.title : 'Venue Name'}</Text>
-                            <Text color='black'>{venue?.location ? venue?.location :  'Canal road, Faisalabad'}</Text>
+            {/* { */}
+            <Touchable style={styles.container} onPress={()=> navigate(venue?.id)}>
+                <Image source={venue?.cover_photo ? { uri: venue?.cover_photo } : image} resizeMode="cover" style={styles.backgroundImage} />
+                <View style={{flex: 1}}>
+                    <Text color='primary' size={16} weight={'semiBold'}>{venue?.title ? (venue.title.length > 20 ? `${venue.title.substring(0, 20).trim()}...` : venue.title) : 'Venue Name'}</Text>
+                    <Text color='black' style={styles.addressText}>{venue?.address ? venue?.address.trim() : 'Canal road, Faisalabad'}</Text>
 
-                            <View style={styles.btnContainer}>
-                                <Touchable style={styles.emailBtn}>
-                                    <Text weight={'medium'} size={13}>EMAIL</Text>
-                                </Touchable>
-                                <Touchable style={[styles.emailBtn, {  backgroundColor: theme.colors.primary }]}>
-                                    <Text weight={'medium'} size={13} color='white'>CALL</Text>
-                                </Touchable>
-                                <Touchable weight={'medium'} style={styles.emailBtn}>
-                                    <Text weight={'medium'} size={13}>SMS</Text>
-                                </Touchable>
-                                <Touchable style={[styles.emailBtn, { paddingHorizontal: 4 }]}>
-                                    <Ionicons name="ios-logo-whatsapp" size={18} color={theme.colors.primary} />
-                                </Touchable>
-                            </View>
-                        </View>
-                    </Touchable>
-                ))
-            }
+
+                    <View style={{alignItems: 'flex-end', width: '100%'}}>
+                        <WishListBtn wishListId={venue.id} navigationHandler={navigationHandler} />
+                    </View>
+                    <View style={styles.btnContainer}>
+                        <Touchable style={styles.emailBtn} onPress={() => openEmailApp(venue?.email)}>
+                            <Text weight={'medium'} size={13}>EMAIL</Text>
+                        </Touchable>
+                        <Touchable style={[styles.emailBtn, { backgroundColor: theme.colors.primary }]} onPress={() => openPhoneCall(venue?.email)}>
+                            <Text weight={'medium'} size={13} color='white'>CALL</Text>
+                        </Touchable>
+                        <Touchable weight={'medium'} style={styles.emailBtn} onPress={() => openMessagingApp(venue?.email)}>
+                            <Text weight={'medium'} size={13}>SMS</Text>
+                        </Touchable>
+                        <Touchable style={[styles.emailBtn, { paddingHorizontal: 4 }]} onPress={() => openWhatsApp(venue?.email)}>
+                            <Ionicons name="ios-logo-whatsapp" size={18} color={theme.colors.primary} />
+                        </Touchable>
+                    </View>
+                </View>
+            </Touchable>
+
+            {/* } */}
         </>
 
     )
@@ -64,15 +102,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     backgroundImage: {
-        height: 100,
+        height: 110,
         width: 100,
         marginRight: 10,
     },
     btnContainer: {
         flexDirection: 'row',
-        // justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 20,
     },
     emailBtn: {
         borderWidth: 1,
@@ -82,5 +118,11 @@ const styles = StyleSheet.create({
         paddingVertical: 2,
         marginTop: 4,
         marginRight: 4
-    }
+    },
+    addressText: {
+        flex: 1,
+        marginTop: 4,
+        maxWidth: '100%', // Set a maximum width for the text
+        flexWrap: 'wrap',
+    },
 })

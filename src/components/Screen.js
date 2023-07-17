@@ -32,7 +32,7 @@ export function Screen({
   );
 
   const content = scroll ? (
-    <ScrollView style={preparedStyle} contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+    <ScrollView style={preparedStyle} contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} >
       {children}
     </ScrollView>
   ) : (
@@ -40,6 +40,8 @@ export function Screen({
   );
 
   return (
+    <>
+    {/* <StatusBar backgroundColor={'#fff'} barStyle="light-content" /> */}
     <KeyboardAvoidingView
       style={[styles.container, { backgroundColor: preparedStyle.backgroundColor }]}
       contentContainerStyle={styles.container}
@@ -48,7 +50,6 @@ export function Screen({
         keyboardVerticalOffset === undefined ? bottomInset : keyboardVerticalOffset
       }
     >
-      <StatusBar backgroundColor={'#fff'} barStyle="light-content" />
 
       {/* this is where you would add your top bar with the header or change the navigation system header */}
 
@@ -62,6 +63,7 @@ export function Screen({
         content
       )}
     </KeyboardAvoidingView>
+    </>
   );
 }
 
